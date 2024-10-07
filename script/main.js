@@ -189,7 +189,7 @@ class ScoringGuide extends Component {
     }
 
     return <form class="wrapper">
-      {title}
+      {/* {title} */}
 
       <table>
         <thead>
@@ -290,7 +290,7 @@ class App extends Component {
       return <ScoringGuide app={this} name={key} values={metricValues} scoring={scoringGuides[key][device]}></ScoringGuide>;
     });
     return <div class="app">
-      <div class="controls wrapper">
+     {/* <div class="controls wrapper">
         <label>Device type:
           <select name="device" value={device} onChange={this.onDeviceChange} >
             <option value="mobile">Mobile</option>
@@ -306,7 +306,7 @@ class App extends Component {
             <option value="5">v5</option>
           </select>
         </label>
-      </div>
+      </div> */}
       {scoringGuideEls}
     </div>
   }

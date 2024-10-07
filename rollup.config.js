@@ -8,7 +8,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 export default {
   input: 'script/main.js',
   output: {
-    file: 'dist/calc.js',
+    file: 'calc.js',
     format: 'es',
     sourcemap: true,
   },

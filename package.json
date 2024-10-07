@@ -8,7 +8,7 @@
     "build": "rollup -c",
     "clean": "rm -rf dist",
     "deploy:ghpages": "gh-pages --dist dist --repo git@github.com:plesiecki/lh-scorecalc.git --dest scorecalc --add --message scorecalc-update -f",
-    "deploy:copy": "cp -r index.html *.css dist",
+    "deploy:copy": "mkdir -p dist && cp -r index.html *.css calc.* dist",
     "deploy": "npm run clean && npm run build && npm run deploy:copy && npm run deploy:ghpages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
