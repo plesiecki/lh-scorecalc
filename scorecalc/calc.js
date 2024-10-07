@@ -156,10 +156,10 @@ const metrics = {
 const curves = {
   v10: {
     mobile: {
-      FCP: {weight: 0.15, median: 3000, p10: 1800},
-      LCP: {weight: 0.30, median: 4000, p10: 2500},
-      INP: {weight: 0.30, median: 500,  p10: 200},
-      CLS: {weight: 0.25, median: 0.25, p10: 0.1},
+      FCP: {weight: 0.1, median: 3000, p10: 1800},
+      LCP: {weight: 0.3, median: 4000, p10: 2500},
+      INP: {weight: 0.3, median: 500,  p10: 200},
+      CLS: {weight: 0.3, median: 0.25, p10: 0.1},
     },
     desktop: {
       FCP: {weight: 0.10, median: 1600, p10: 934},
