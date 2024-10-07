@@ -156,10 +156,10 @@ const metrics = {
 const curves = {
   v10: {
     mobile: {
-      FCP: {weight: 0.1, median: 3000, p10: 1800},
-      LCP: {weight: 0.3, median: 4000, p10: 2500},
-      INP: {weight: 0.3, median: 500,  p10: 200},
-      CLS: {weight: 0.3, median: 0.25, p10: 0.1},
+      FCP: {weight: 0.15, median: 3000, p10: 1800},
+      LCP: {weight: 0.30, median: 4000, p10: 2500},
+      INP: {weight: 0.30, median: 500,  p10: 200},
+      CLS: {weight: 0.25, median: 0.25, p10: 0.1},
     },
     desktop: {
       FCP: {weight: 0.10, median: 1600, p10: 934},
@@ -665,17 +665,17 @@ class ScoringGuide extends m {
 
     const score = arithmeticMean(auditRefs);
 
-    let title = h( 'h2', null, name );
+    h( 'h2', null, name );
     if (name === 'v10') {
-      title = h( 'h2', null, "latest", h( 'br', null ), h( 'i', null, h( 'a', { href: "https://github.com/GoogleChrome/lighthouse/releases/tag/v10.0.0" }, "v10") ) );
+      h( 'h2', null, "latest", h( 'br', null ), h( 'i', null, h( 'a', { href: "https://github.com/GoogleChrome/lighthouse/releases/tag/v10.0.0" }, "v10") ) );
     } else if (name === 'v8') {
-      title = h( 'h2', null, h( 'i', null, h( 'a', { href: "https://github.com/GoogleChrome/lighthouse/releases/tag/v8.0.0" }, "v8, v9") ) );
+      h( 'h2', null, h( 'i', null, h( 'a', { href: "https://github.com/GoogleChrome/lighthouse/releases/tag/v8.0.0" }, "v8, v9") ) );
     } else if (name === 'v6') {
-      title = h( 'h2', null, h( 'i', null, h( 'a', { href: "https://github.com/GoogleChrome/lighthouse/releases/tag/v6.0.0" }, "v6, v7") ) );
+      h( 'h2', null, h( 'i', null, h( 'a', { href: "https://github.com/GoogleChrome/lighthouse/releases/tag/v6.0.0" }, "v6, v7") ) );
     }
 
-    return h( 'form', { class: "wrapper" },
-      title,
+    return h( 'form', { class: "wrapper" }
+      /* {title} */,
 
       h( 'table', null,
         h( 'thead', null,
@@ -775,22 +775,24 @@ class App extends m {
       console.assert(scoringGuides[key], `scoringGuide for ${key} doesnt exist`);
       return h( ScoringGuide, { app: this, name: key, values: metricValues, scoring: scoringGuides[key][device] });
     });
-    return h( 'div', { class: "app" },
-      h( 'div', { class: "controls wrapper" },
-        h( 'label', null, "Device type: ", h( 'select', { name: "device", value: device, onChange: this.onDeviceChange },
-            h( 'option', { value: "mobile" }, "Mobile"),
-            h( 'option', { value: "desktop" }, "Desktop")
-          )
-        ),
-        h( 'label', null, "Versions: ", h( 'select', { name: "versions", value: normalizedVersions.join(','), onChange: this.onVersionsChange },
-            h( 'option', { value: "10,8,6,5" }, "show all"),
-            h( 'option', { value: "10" }, "v10, v11, v12"),
-            h( 'option', { value: "8" }, "v8, v9"),
-            h( 'option', { value: "6" }, "v6, v7"),
-            h( 'option', { value: "5" }, "v5")
-          )
-        )
-      ),
+    return h( 'div', { class: "app" }
+      /* <div class="controls wrapper">
+        <label>Device type:
+          <select name="device" value={device} onChange={this.onDeviceChange} >
+            <option value="mobile">Mobile</option>
+            <option value="desktop">Desktop</option>
+          </select>
+        </label>
+        <label>Versions:
+          <select name="versions" value={normalizedVersions.join(',')} onChange={this.onVersionsChange} >
+            <option value="10,8,6,5">show all</option>
+            <option value="10">v10, v11, v12</option>
+            <option value="8">v8, v9</option>
+            <option value="6">v6, v7</option>
+            <option value="5">v5</option>
+          </select>
+        </label>
+      </div> */,
       scoringGuideEls
     )
   }
