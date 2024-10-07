@@ -155,12 +155,15 @@ class ScoringGuide extends Component {
 
     const metricsData = Object.keys(scoring).map(id => {
       const metricScoring = scoring[id];
-      return {
+
+      const result = {
         id,
         metricScoring,
         value: values[id],
         score: Math.round(QUANTILE_AT_VALUE(metricScoring, values[id]) * 100),
       };
+
+      return result;
     });
 
     const auditRefs = metricsData.map(metric => {
